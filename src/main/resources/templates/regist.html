@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+	<link rel="stylesheet" type="text/css" th:href="@{/static/css/font-awesome-4.6.3/css/font-awesome.min.css}"/>
+	
+	<link rel="stylesheet"  th:href="@{/static/easyUI/themes/metro-blue/easyui.css}"></link>
+	<link rel="stylesheet"  th:href="@{/static/easyUI/themes/mobile.css}"></link>
+	<link rel="stylesheet"  th:href="@{/static/easyUI/themes/icon.css}"></link>
+	<!-- <link rel="stylesheet" th:href="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css}"></link> -->
+	<script type="text/javascript" th:src="@{/static/Jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/static/easyUI/jquery.easyui.min.js}"></script>
+	<script type="text/javascript" th:src="@{/static/easyUI/easyui-lang-zh_CN.js}"></script>
+	<script type="text/javascript" th:src="@{/static/easyUI/jquery.easyui.mobile.js}"></script>
+	
+	
+	<!-- <script type="text/javascript" th:src="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js}"></script> -->
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript">
+	(function($){  
+	    $.fn.serializeJson=function(){
+	        var serializeObj={};  
+	        var array=this.serializeArray();  
+	        var str=this.serialize();  
+	        $(array).each(function(){  
+	            if(serializeObj[this.name]){  
+	                if($.isArray(serializeObj[this.name])){  
+	                    serializeObj[this.name].push(this.value);  
+	                }else{  
+	                    serializeObj[this.name]=[serializeObj[this.name],this.value];  
+	                }  
+	            }else{  
+	                serializeObj[this.name]=this.value;   
+	            }  
+	        });  
+	        return serializeObj;  
+	    };  
+	})(jQuery);
+	</script>
+
+</head>
+<body>
+	<input type="hidden"  id="isreg" th:value="${isreg?:0}"/>
+	<input type="hidden"  id="recode" th:value="${recode?:'no'}"/>
+    <div class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">
+                <span class="m-title">注册</span>
+            </div>
+      
+        </header>
+        <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden">
+            <img  th:src="@{/static/image/logo.png}"  width="100%" height="100%" />
+        </div>
+        <div style="padding:0 20px">
+            <div style="margin-bottom:10px">
+                <input class="easyui-textbox" data-options="prompt:'请输入手机号',iconCls:'icon-man'" style="width:100%;height:38px" id="username"/>
+            </div>
+            <div style="margin-bottom:10px">
+                <input class="easyui-passwordbox" data-options="prompt:'密码(6位字母或数字)'" style="width:100%;height:38px" id="password"/>
+            </div>
+            <div style="margin-bottom:10px">
+                <input class="easyui-textbox" data-options="prompt:'推荐码'" style="width:100%;height:38px" id="recommond"/>
+            </div>
+            
+            <div style="text-align:center;margin-top:30px">
+            <!--  onclick="regist()" --> 
+                <button href="javascript:void(0)"  onclick="regist()" class="easyui-linkbutton" style="width:100%;height:40px" ><span style="font-size:16px">注册</span></button>
+            </div>
+        </div>
+    </div>
+    
+    
+        <div id="p2" class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">
+                <div class="m-title">注册成功</div>
+
+            </div>
+        </header>
+        <!-- <div class="easyui-tabs" data-options="fit:true,border:false,tabWidth:80,tabHeight:35"> -->
+        
+        <div title="关注公众号" style="padding:10px">
+        <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden;background: green;">
+        	<img  th:src="@{/static/image/logo.png}"  width="100%" height="100%" />
+            	
+        </div>
+            <div style="padding:10px;text-align: center;">
+
+                <h1 style="font-size: 20px;text-align: center;">恭喜注册成功</h1>
+                <h1 style="font-size: 20px;text-align: center;">一推荐好友关注</h1>
+                <p style="font-size: 15px;text-align: center;">送亲友免费体验卷</p>
+                <p style="font-size: 15px;text-align: center;">加入平台分红</p>
+                <p style="font-size: 15px;text-align: center;">更过衣没服务功能</p>
+                <p style="font-size: 15px;text-align: center;">获取免费整形机构</p>
+                <p style="font-size: 15px;text-align: center;">一起开启美丽之旅</p>
+                
+                <h1 style="font-size: 20px;text-align: center;">详情请关注公众号查看</h1>
+                <p><img  th:src="@{/static/image/2.png}" width="150" height="150"/></p>
+            </div>
+         </div>
+            <!-- 
+             <div title="二维码推荐" style="padding:10px" >
+
+        <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden;background: green;">
+        	<img  th:src="@{/static/image/logo.png}"  width="100%" height="100%" />
+            	
+        </div>
+            <div style="padding:10px;text-align: center;">
+
+                <h1 style="font-size: 20px;text-align: center;">推荐好友</h1>
+                <h1 style="font-size: 20px;text-align: center;">二推荐好友注册</h1>
+                <p style="font-size: 15px;text-align: center;">转发分享二维码</p>
+                <p style="font-size: 15px;text-align: center;">加入平台分红</p>
+                
+                <p style="font-size: 15px;text-align: center;">享受平台提成</p>
+                <p style="font-size: 15px;text-align: center;">一起开启美丽之旅</p>
+                
+                                    <p><img   width="200" height="200"  id="ew"/></p>
+  
+            </div>
+          
+            </div>
+            
+ -->
+
+
+
+
+
+
+      <!--       <div title="短信推荐"  style="padding:10px">
+        <div style="margin:20px auto;width:100px;height:100px;border-radius:100px;overflow:hidden;background: green;">
+        	<img  th:src="@{/static/image/logo.png}"  width="100%" height="100%" />
+            	
+        </div>
+      <div style="padding:0 20px">
+         <ul class="m-list">
+            <li>
+                <div class="m-center">
+                <input class="easyui-textbox" label="朋友姓名:" prompt="请输入朋友姓名" style="width:100%" name="fname" id="fname"/></div>
+            </li>
+            <li>
+               	<div class="m-center">
+                <input class="easyui-textbox" label="朋友手机:" prompt="请输入朋友手机" style="width:100%" name="fmobile" id="fmobile"/></div>
+            </li>
+            <li>
+                <span>性别</span>
+                <div class="m-center">
+                <lable>性别:</lable>
+                </div>
+                <div class="m-right">
+                <input class="easyui-switchbutton" id="fsex" name="fsex"  data-options="checked:true,onText:'男',offText:'女',value:'男'" />
+                </div>
+            </li>
+            <li>
+            	<div class="m-center">    
+                  <div href="javascript:void(0)" style="margin-bottom: 5px;">朋友描述(100字以内):</div> 
+            		<input class="easyui-textbox" style="width: 300px;height: 80px;" data-options="multiline:true"  id="fdesc" name="fdesc"/>
+				</div>
+            </li>
+            <li>
+            	<div class="m-center">    
+                <button  id="freco"   onclick="" class="easyui-linkbutton" style="width:100%;height:40px" ><span style="font-size:16px">推荐</span></button>
+				</div>
+            </li>
+            
+        </ul>
+      </div>
+         
+            </div> -->
+
+          <!--   </div> -->
+    </div>
+
+</body>
+<script th:inline="javascript">
+wx.config({
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: [[${appId}]], // 必填，公众号的唯一标识
+    timestamp: [[${timestamp}]], // 必填，生成签名的时间戳
+    nonceStr: [[${nonceStr}]], // 必填，生成签名的随机串
+    signature: [[${signature}]],// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline'
+    	,'onMenuShareAppMessage'
+    	,'onMenuShareQQ'
+    	,'onMenuShareWeibo'
+    	,'onMenuShareQZone'
+    	,'startRecord'
+    	,'stopRecord'
+    	,'onVoiceRecordEnd'
+    	,'playVoice'
+    	,'pauseVoice'
+    	,'stopVoice'
+    	,'onVoicePlayEnd'
+    	,'uploadVoice'
+    	,'downloadVoice'
+    	,'chooseImage'
+    	,'previewImage'
+    	,'uploadImage'
+    	,'downloadImage'
+    	,'translateVoice'
+    	,'getNetworkType'
+    	,'openLocation'
+    	,'getLocation'
+    	,'hideOptionMenu'
+    	,'showOptionMenu'
+    	,'hideMenuItems'
+    	,'showMenuItems'
+    	,'hideAllNonBaseMenuItem'
+    	,'showAllNonBaseMenuItem'
+    	,'closeWindow'
+    	,'scanQRCode'
+    	,'chooseWXPay'
+    	,'openProductSpecificView'
+    	,'addCard'
+    	,'chooseCard'
+    	,'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+	wx.error(function(error){
+	    
+		alert("errorMSG:"+error);
+	    
+	});
+    
+  //  alert(wx.onMenuShareTimeline);
+    
+	//分享到朋友圈
+	wx.onMenuShareTimeline(
+		{
+	    	title: '分享到朋友圈', 
+			link: 'http://www.baidu.com', 
+			
+	    	success: function () {
+
+	  //  	alert('分享到朋友圈 成功');
+			},
+		
+			cancel: function () {
+
+		//    alert('分享到朋友圈 取消');
+		    }
+		}
+    );
+
+
+	//分享给朋友	
+	wx.onMenuShareAppMessage({
+		title: '分享给朋友', // 分享标题
+		desc: '分享给朋友', // 分享描述
+		link: 'http://www.baidu.com', // 分享链接
+
+		type: '', // 分享类型,music、video或link，不填默认为link
+		dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		success: function () {
+		// 用户确认分享后执行的回调函数
+		//	alert('分享给朋友成功');
+		},
+		cancel: function () {
+		// 用户取消分享后执行的回调函数
+		//	alert('取消');
+		}
+		});
+
+
+	//分享到QQ
+	wx.onMenuShareQQ({
+		title: '分享到QQ', // 分享标题
+		desc: '分享到QQ', // 分享描述
+		link: 'http://www.baidu.com', // 分享链接
+
+		success: function () {
+		// 用户确认分享后执行的回调函数
+		//	alert('分享到QQ成功');
+		},
+		cancel: function () {
+		// 用户取消分享后执行的回调函数
+		//	alert('取消');
+		}
+		});
+
+
+	//分享到腾讯微博
+	wx.onMenuShareWeibo({
+	title: '分享到腾讯微博', // 分享标题
+	desc: '分享到腾讯微博', // 分享描述
+	link: 'http://www.baidu.com', // 分享链接
+
+	success: function () {
+	// 用户确认分享后执行的回调函数
+	//	alert('分享到腾讯微博成功');	
+	},
+	cancel: function () {
+	// 用户取消分享后执行的回调函数
+	//	alert('取消');
+	}
+	});
+	
+	
+	
+	//分享到QQ空间
+	wx.onMenuShareQZone({
+		title: '分享到QQ空间', // 分享标题
+		desc: '分享到QQ空间', // 分享描述
+		link: 'http://www.baidu.com', // 分享链接
+
+		success: function () {
+		// 用户确认分享后执行的回调函数
+	//	alert('分享到QQ空间');
+		},
+		cancel: function () {
+		// 用户取消分享后执行的回调函数
+	//	alert('取消');
+		}
+		});
+
+});
+
+
+</script>
+<script th:inline="javascript">
+var basepath=[[${basepath?:'weChat'}]];
+</script>
+<script type="text/javascript" th:src="@{/static/js/regist/regist.js}"></script>
+</html>

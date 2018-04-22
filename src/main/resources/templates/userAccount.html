@@ -1,0 +1,186 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" />
+<title>用户信息</title>
+<link rel="stylesheet"   th:href="@{/static/userMessage/weui/lib/weui.min.css}"/>
+<link rel="stylesheet"   th:href="@{/static/userMessage/weui/css/jquery-weui.min.css}"/>
+<link rel="stylesheet"   th:href="@{/static/userMessage/css/module.css}" />
+<link  th:href="@{/static/css/weui/bootstrap.css}"  rel="stylesheet" type="text/css"/>
+<link  th:href="@{/static/css/weui/home.css}"  rel="stylesheet" type="text/css"/>
+<link  th:href="@{/static/css/weui/font_6yxmrwgmg7kl0udi.css}"  rel="stylesheet" type="text/css"/>
+<script  th:src="@{/static/userMessage/weui/lib/jquery-2.1.4.js}"></script>
+<!-- <script  th:src="@{/static/userMessage/weui/js/jquery-weui.min.js}" ></script> -->
+<!-- <script type='text/javascript'  th:src="@{/static/userMessage/js/swiper.js}"  ></script> -->
+</head>
+<body>
+	<div class="user" style="background-color: #daeef5">
+		<div class="userImg"><img   th:src="${user_img_url}" /></div>
+		<div class="ueseText">
+			<h3> <span></span></h3>
+			<p style="color: black;" th:text="${nick_name}" >老大爷</p>
+		</div>
+	</div>
+	
+	<div class="weui-grids">
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	  <span class="weui-badge" style="position: absolute;top: .10em;right: 3.5em;" th:text="${{money?:0}+'元'}">8</span>
+	    <div class="weui-grid__icon"><img  th:src="@{/static/userMessage/images/daka.png}"  alt=""/> </div>
+	    <p class="weui-grid__label">余额</p>
+	  </a>
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	    <div class="weui-grid__icon"><img th:src="@{/static/userMessage/images/dakajilu.png}"  alt=""/></div>
+	    <p class="weui-grid__label">代金卷</p>
+	  </a>
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	  <span class="weui-badge" style="position: absolute;top: .10em;right: 3.5em;" th:text="${{valid_integral?:0}+'瓣'}">8</span>
+	    <div class="weui-grid__icon"><img  th:src="@{/static/userMessage/images/tongji.png}"  alt=""/></div>
+	    <p class="weui-grid__label">花瓣</p>
+	  </a>
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	  <span class="weui-badge" style="position: absolute;top: .10em;right: 3.5em;" th:text="${{valid_integral?:0}+'分'}">8</span>
+	    <div class="weui-grid__icon"><img  th:src="@{/static/userMessage/images/waiqin.png}"  alt=""/></div>
+	    <p class="weui-grid__label">积分</p>
+	  </a>
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	    <div class="weui-grid__icon"><img  th:src="@{/static/userMessage/images/qingjia.png}"  alt=""/></div>
+	    <p class="weui-grid__label">进行中</p>
+	  </a>
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	    <div class="weui-grid__icon"><img th:src="@{/static/userMessage/images/qingjiajilu.png}"   alt=""/></div>
+	    <p class="weui-grid__label">待评价</p>
+	  </a>
+	  <a href="" class="weui-grid js_grid" onclick="return false;">
+	    <div class="weui-grid__icon"><img  th:src="@{/static/userMessage/images/jiaban.png}"  alt=""/></div>
+	    <p class="weui-grid__label">已完成</p>
+	  </a>
+<!-- 	  <a href="" class="weui-grid js_grid">
+	    <div class="weui-grid__icon"><img  th:src="@{/static/userMessage/images/gongzi.png}"  alt=""/></div>
+	    <p class="weui-grid__label"> 工资条</p>
+	  </a> -->
+	  <a href="setting" class="weui-grid js_grid" >
+	    <div class="weui-grid__icon"><img th:src="@{/static/userMessage/images/set.png}"  alt=""/></div>
+	    <p class="weui-grid__label"> 设置</p>
+	  </a>
+	</div>
+	
+	
+	
+	
+	<div class="footer">
+
+	<div class="container">
+		<div class="row">
+<!-- 			<div class="col-xs-4">
+				<a href="javascript:void(0);" class="dao">
+				<i class="iconfont icon-shouye-copy-copy-copy"></i>
+				<span class="nav_ti">商城</span>
+				</a>
+			</div>
+			<div class="col-xs-4">
+				<a href="cart" class="dao">
+				<i class="iconfont icon-zhangdan"></i>
+				<span class="nav_ti">购物车</span>
+				</a>
+			</div>
+			<div class="col-xs-4">
+				<a href="initAccount" class="dao">
+				<i class="iconfont icon-information" style="color:#246fc0;"></i>
+				<span class="nav_ti" style="color:#246fc0;">个人中心</span>
+				</a>
+			</div> -->
+		</div>
+	</div>
+
+
+</div>
+
+</body>
+
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript">
+	(function($){
+	    $.fn.serializeJson=function(){
+	        var serializeObj={};  
+	        var array=this.serializeArray();  
+	        var str=this.serialize();  
+	        $(array).each(function(){  
+	            if(serializeObj[this.name]){  
+	                if($.isArray(serializeObj[this.name])){  
+	                    serializeObj[this.name].push(this.value);  
+	                }else{  
+	                    serializeObj[this.name]=[serializeObj[this.name],this.value];  
+	                }  
+	            }else{  
+	                serializeObj[this.name]=this.value;   
+	            }  
+	        });  
+	        return serializeObj;  
+	    };  
+	})(jQuery);
+	</script>
+<script th:inline="javascript">
+wx.config({
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: [[${appId}]], // 必填，公众号的唯一标识
+    timestamp: [[${timestamp}]], // 必填，生成签名的时间戳
+    nonceStr: [[${nonceStr}]], // 必填，生成签名的随机串
+    signature: [[${signature}]],// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline'
+    	,'onMenuShareAppMessage'
+    	,'onMenuShareQQ'
+    	,'onMenuShareWeibo'
+    	,'onMenuShareQZone'
+    	,'startRecord'
+    	,'stopRecord'
+    	,'onVoiceRecordEnd'
+    	,'playVoice'
+    	,'pauseVoice'
+    	,'stopVoice'
+    	,'onVoicePlayEnd'
+    	,'uploadVoice'
+    	,'downloadVoice'
+    	,'chooseImage'
+    	,'previewImage'
+    	,'uploadImage'
+    	,'downloadImage'
+    	,'translateVoice'
+    	,'getNetworkType'
+    	,'openLocation'
+    	,'getLocation'
+    	,'hideOptionMenu'
+    	,'showOptionMenu'
+    	,'hideMenuItems'
+    	,'showMenuItems'
+    	,'hideAllNonBaseMenuItem'
+    	,'showAllNonBaseMenuItem'
+    	,'closeWindow'
+    	,'scanQRCode'
+    	,'chooseWXPay'
+    	,'openProductSpecificView'
+    	,'addCard'
+    	,'chooseCard'
+    	,'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+/* 	if($("#error").val()==1){
+		alert('推荐码不存在');
+	}else if($('#error').val()==2){
+		alert('手机号不存在');
+	} */
+    
+});
+
+wx.error(function(error){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	//alert(error);
+    
+});
+
+
+</script>
+</html>

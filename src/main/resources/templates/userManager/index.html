@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>我的订单</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="renderer" content="webkit"/>
+  <meta content="yes" name="apple-touch-fullscreen"/>
+	<meta content="telephone=no" name="format-detection"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta http-equiv="Expires" content="-1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="pragma" content="no-cache"/>
+  <meta name="applicable-device" content="mobile"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta http-equiv="cache-control" content="max-age=0"/>
+  <meta http-equiv="cache-control" content="no-cache"/>
+  <meta http-equiv="expires" content="0"/>
+  <meta http-equiv="Set-Cookie" content="name=value expires= Sat Sep 27 16:12:36 CST 2008, path=/" />
+	<meta name='renderer' content="webkit" />
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <meta name="author" content="cel" />
+  <link  rel="stylesheet" media="screen" type="text/css"   th:href="@{/static/css/gorder.css}"/>
+	<style>
+       img{margin:-0.5px;padding: 0;border: 0;outline:none;vertical-align:top;}
+	</style>
+</head>
+<body>
+<div class="wrap">
+    <!-- <div class="order-header"><p>我的账户</p><a href="javascript:void(0)" id="indextop"><img   th:src="@{/static/images/3.png}" /></a></div> -->
+    <ul class="order-content">
+        <li class="user-names" style="text-align: center;width: 60%;"><a href="javascript:void(0)"><img   th:src="${user.userImgUrl}" />
+        <div><p class="user-names1" th:text="${user.nickName}" id="nickname" style="font-size:0.88rem;"></p>
+        <p class="user-names2" th:text="${user.validIntegral}" style="margin-top: 3%;margin-bottom: 3%;"></p>
+        <p  class="user-names3"  th:text="${user.userName}" style="font-size:0.3rem;"></p></div></a></li>
+        <li onclick="go()" class="collections" style="width: 40%;"><a href="javascript:void(0)" ><img   th:src="@{/static/images/collection.png}"/><p >成为分享家</p><div><img   th:src="@{/static/images/arrow-right.png}"  style="display:block"/></div></a></li>
+    </ul>
+    <div class="clear"></div>
+    <ul class="order-project">
+        <li style="border-right:none;cursor: pointer;" onclick="gotolist(1)"><a href="javascript:void(0)"><img th:src="@{/static/images/order-money.png}"  /><p>余额</p></a></li>
+        <li style="border-right:none;cursor: pointer;" onclick="gotolist(2)"><a href="javascript:void(0)"><img  th:src="@{/static/images/order-cash.png}"  /><p>代金券</p></a></li>
+        <li style="border-right:none;cursor: pointer;" onclick="gotolist(3)"><a href="javascript:void(0)"><img  th:src="@{/static/images/order-petal.png}" /><p>花瓣</p></a></li>
+        <li style="border-right:none;cursor: pointer;" onclick="gotolist(4)"  class="order-integral"><a href="javascript:void(0)"><img  th:src="@{/static/images/order-integral.png}"  /><p>积分</p></a></li>
+        <div class="clear"></div>
+    </ul>
+    <div style="clear:both"></div>
+    <div class="my-order">
+        <div class="my-order1"  style="cursor: pointer;" onclick="godetail()"><p><img  th:src="@{/static/images/myname.jpg}" />我的项目</p><p class="my-order2"><a href="javascript:void(0)">查看我的项目<img   th:src="@{/static/images/arrow-right.png}" /></a></p></div>
+         <div class="clear"></div>
+<!--          <ul>
+           <li><a href="javascript:void(0)"><img  th:src="@{/static/images/order-conduct.png}"/><p>进行中</p></a></li>
+           <li><a href="javascript:void(0)"><img   th:src="@{/static/images/order-evaluate.png}" /><p>待评价</p></a></li>
+           <li style="border-right:none;" class="order-integral"><a href="javascript:void(0)"><img   th:src="@{/static/images/order-complete.png}" /><p>已完成</p></a></li>
+          <div class="clear"></div>  
+         </ul> -->
+    </div>
+    <div class="order-ask"><a href="javascript:void(0)"><img   th:src="@{/static/images/order-ask2.png}" />咨询评价</a><a href="javascript:void(0)"><img  th:src="@{/static/images/arrow-right.png}"  style="float:right"/></a></div>
+    <div class="order-ask2"><a href="javascript:void(0)"><img  th:src="@{/static/images/order-ask.png}" />人工客服</a><a href="javascript:void(0)" style="float:right;text-align:right;color:#5da2e7">18611305888<img  th:src="@{/static/images/arrow-right.png}" /></a></div>
+    <div class="clear"></div>
+</div>
+</body>
+
+<script th:inline="javascript">
+
+window.onload=function(){
+	nickName=[[${user.nickName}]];	
+	nickname.innerHTML='';
+	if(nickName.length>5){
+		nickname.innerHTML=nickName.substring(0,5)+"..";
+	}else{
+		nickname.innerHTML=nickName.substring(0,5);
+	}
+	gotolist(1);
+}
+
+function godetail(){
+	window.location.href="project/projectDetail";
+}
+
+
+function gotolist(type){
+	if(type==1){
+		console.log(1);
+	}
+	if(type==2){
+		console.log(2);
+	}
+	if(type==3){
+		console.log(3);
+	}
+	if(type==4){
+		console.log(4);
+		window.location.href="getRecord/listDetail";
+	}
+	
+}
+function go(){
+	window.location.href='ewtj';
+}
+</script>
+
+</html>

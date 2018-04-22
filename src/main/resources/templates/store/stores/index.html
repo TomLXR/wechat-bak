@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>门店</title>
+    <meta name="keywords" content="门店"/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="renderer" content="webkit"/>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/store/css/base.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/static/store/css/store.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/static/store/css/swiper.min.css}" />
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            height: auto;
+            text-align: center;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        
+
+        
+
+        <div class="swiper-slide">
+            <section  class="ani third" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                <a href="storeChild?name=zhongshan">
+                    <img  src="http://yx.nmlte.com:8080/wechat/image/store/kunqu.png"  class="titlepic" />
+                    <h1 >包头-昆区国际店 </h1>
+                    <p >包头市昆区友谊大街与林荫路交叉口（昆区华联斜对面，同利家电往东50米）</p>
+                    <p>友谊市场站：15   21   29  35   55     电话：0472-2361515</p>
+                    <img th:src="@{/static/store/images/storeinfo.png}"   class="more"  />
+                </a>
+            </section>
+        </div>
+        
+        
+        <div class="swiper-slide">
+            <section  class="ani third" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                <a href="storeChild?name=zhongshan">
+                    <img  src="http://yx.nmlte.com:8080/wechat/image/store/jiuxing.png"  class="titlepic" />
+                    <h1 >包头青山九星店</h1>
+                    <p >青山区九星国际南100米（七天连锁酒店正对面）</p>
+                    <p>富强市场站：2    33    电话：0472-2601888</p>
+                    <img th:src="@{/static/store/images/storeinfo.png}"   class="more"  />
+                </a>
+            </section>
+        </div>
+
+
+        <div class="swiper-slide">
+            <section  class="ani third" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                <a href="storeChild?name=zhongshan">
+                    <img  src="http://yx.nmlte.com:8080/wechat/image/store/jindi.png"  class="titlepic" />
+                    <h1 >呼市赛罕区金地店</h1>
+                    <p >呼和浩特市赛罕区学苑西街（金地商城广场往东100米路北）</p>
+                    <p>金地商城店：50  53   60   83   84     电话：0471-3245955</p>
+                    <img th:src="@{/static/store/images/storeinfo.png}"   class="more"  />
+                </a>
+            </section>
+        </div>
+        
+        <div class="swiper-slide">
+            <section  class="ani third" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                <a href="storeChild?name=zhongshan">
+                    <img  src="http://yx.nmlte.com:8080/wechat/image/store/jinsui.png"  class="titlepic" />
+                    <h1 >呼市赛罕区金岁店</h1>
+                    <p >呼和浩特市赛汗区兴安南路（金岁大酒店旁） 路东、朝西.</p>
+                    <p>金岁大酒店站：一环1号    一环2号  18   36   37   电话：0471-6606816</p>
+                    <img th:src="@{/static/store/images/storeinfo.png}"   class="more"  />
+                </a>
+            </section>
+        </div>
+
+
+        <div class="swiper-slide">
+            <section  class="ani third" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0.1s">
+                <a href="storeChild?name=zhongshan">
+                    <img  src="http://yx.nmlte.com:8080/wechat/image/store/zhongshan.png"  class="titlepic" />
+                    <h1 >呼市中山路店</h1>
+                    <p >呼和浩特市回民区中山西路  首府人才市场正对面</p>
+                    <p>首府人才市场站：青城1号线、青城2号线、3  4 电话：0471-3317878</p>
+                    <img th:src="@{/static/store/images/storeinfo.png}"   class="more"  />
+                </a>
+            </section>
+        </div>
+        
+                                    </div>
+</div>
+
+<script th:src="@{/static/store/js/swiper.min.js}"></script>
+<script th:src="@{/static/store/js/jquery-1.11.1.min.js}"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        loop : true,
+        centeredSlides:true,
+        effect : 'coverflow',
+        slidesPerView: 3,
+        loopedSlides: 13,
+        mousewheel:true,
+        slidesOffsetBefore : 0,
+        coverflowEffect: {
+            rotate: 30,
+            stretch: -10,
+            depth: 60,
+            modifier: 2,
+            slideShadows : false
+        },
+    });
+</script>
+<script>;</script><script type="text/javascript" th:src="@{/static/store/js/index.js}"></script>
+</body>
+</html>
+

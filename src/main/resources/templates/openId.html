@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+	<link rel="stylesheet" type="text/css" th:href="@{/static/css/font-awesome-4.6.3/css/font-awesome.min.css}"/>
+	
+	<link rel="stylesheet"  th:href="@{/static/easyUI/themes/metro-blue/easyui.css}"></link>
+	<link rel="stylesheet"  th:href="@{/static/easyUI/themes/mobile.css}"></link>
+	<link rel="stylesheet"  th:href="@{/static/easyUI/themes/icon.css}"></link>
+	<!-- <link rel="stylesheet" th:href="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css}"></link> -->
+	<script type="text/javascript" th:src="@{/static/Jquery/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/static/easyUI/jquery.easyui.min.js}"></script>
+	<script type="text/javascript" th:src="@{/static/easyUI/easyui-lang-zh_CN.js}"></script>
+	<script type="text/javascript" th:src="@{/static/easyUI/jquery.easyui.mobile.js}"></script>
+	
+	
+	<!-- <script type="text/javascript" th:src="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js}"></script> -->
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+
+</head>
+<body style="text-align: center;">
+	<script th:inline="javascript">
+		window.onload=function(){
+			var openId=[[${openid}]];
+			document.write('<h3>'+openId+'</h3>');
+		}
+	
+	</script>
+ </body>
+</html>

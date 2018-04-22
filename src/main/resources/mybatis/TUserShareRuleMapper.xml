@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gasq.bdp.logn.mapper.TUserShareRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.gasq.bdp.logn.model.TUserShareRule" >
+    <id column="share_type" property="shareType" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="SMALLINT" />
+    <result column="discount" property="discount" jdbcType="DECIMAL" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    share_type, level, discount, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gasq.bdp.logn.model.TUserShareRuleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_share_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_share_rule
+    where share_type = #{shareType,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user_share_rule
+    where share_type = #{shareType,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gasq.bdp.logn.model.TUserShareRuleExample" >
+    delete from t_user_share_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gasq.bdp.logn.model.TUserShareRule" >
+    insert into t_user_share_rule (share_type, level, discount, 
+      status)
+    values (#{shareType,jdbcType=INTEGER}, #{level,jdbcType=SMALLINT}, #{discount,jdbcType=DECIMAL}, 
+      #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gasq.bdp.logn.model.TUserShareRule" >
+    insert into t_user_share_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shareType != null" >
+        share_type,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shareType != null" >
+        #{shareType,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gasq.bdp.logn.model.TUserShareRuleExample" resultType="java.lang.Integer" >
+    select count(*) from t_user_share_rule
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_user_share_rule
+    <set >
+      <if test="record.shareType != null" >
+        share_type = #{record.shareType,jdbcType=INTEGER},
+      </if>
+      <if test="record.level != null" >
+        level = #{record.level,jdbcType=SMALLINT},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_user_share_rule
+    set share_type = #{record.shareType,jdbcType=INTEGER},
+      level = #{record.level,jdbcType=SMALLINT},
+      discount = #{record.discount,jdbcType=DECIMAL},
+      status = #{record.status,jdbcType=TINYINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gasq.bdp.logn.model.TUserShareRule" >
+    update t_user_share_rule
+    <set >
+      <if test="level != null" >
+        level = #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where share_type = #{shareType,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gasq.bdp.logn.model.TUserShareRule" >
+    update t_user_share_rule
+    set level = #{level,jdbcType=SMALLINT},
+      discount = #{discount,jdbcType=DECIMAL},
+      status = #{status,jdbcType=TINYINT}
+    where share_type = #{shareType,jdbcType=INTEGER}
+  </update>
+</mapper>

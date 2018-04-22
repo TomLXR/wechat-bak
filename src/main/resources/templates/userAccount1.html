@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css}" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/[version]/jquery.mobile-[version].min.css" />
+	    <link rel="stylesheet" th:href="@{/static/css/weui/jquery-weui.min.css}"></link>
+ 	<link rel="stylesheet"  th:href="@{/static/css/weui/weui.css}" ></link>
+ 	<link rel="stylesheet"  th:href="@{/static/css/weui/bootstrap.css}" ></link>
+ 	<link rel="stylesheet"  th:href="@{/static/css/weui/home.css}" ></link>
+ 	<link rel="stylesheet"  th:href="@{/static/css/weui/font_6yxmrwgmg7kl0udi.css}" ></link>
+ 	 
+<script type="text/javascript" th:src="@{/static/Jquery/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js}"></script>
+<style type="text/css">
+.icon-jiantou:before {
+    content: "\e635";
+}
+</style>	
+	
+</head>
+<body style="background-color: #f9f9f9;">
+
+
+<div data-role="page" id="pageone">
+			<div style="position: relative;width: 100%;text-align: center;overflow: hidden;">
+				<img alt="" th:src="@{/static/image/userimage/tiao.png}" width="1.5%" height="100%" style="left: 5%;top: 12px;position: relative;float: left;"/>
+				<p style="position: relative;font-size: 7px;float: left;top:-250%;line-height: 500%;left:5%;"><span style="background-color: #C0C0C0">我的项目</span></p>
+				<p style="font-size: 7px;position: relative;float: right;top:500%;line-height: 500%;right:5%;"><span style="background-color: #969696">查看我的项目</span></p>
+			</div>
+	
+    <div class="weui-grids">
+      <a href="demos/buttons.html" class="weui-grid js_grid" style="width: 24%;margin-left: 0.5%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+          <img  th:src="@{/static/image/userimage/1.png}"  alt=""/>
+        </div>
+        <p class="weui-grid__label">
+          余额
+        </p>
+      </a>
+      <a href="demos/cell.html" class="weui-grid js_grid"   style="width: 24%;margin-left: 1%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+          <img th:src="@{/static/image/userimage/2.png}" alt=""/>
+        </div>
+        <p class="weui-grid__label">
+          代金卷
+        </p>
+      </a>
+      <a href="demos/form.html" class="weui-grid js_grid"   style="width: 24%;margin-left: 1%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+          <img th:src="@{/static/image/userimage/3.png}" alt=""/>
+        </div>
+        <p class="weui-grid__label">
+          花瓣
+        </p>
+      </a>
+      <a href="demos/flex.html" class="weui-grid js_grid"   style="width: 24%;margin-left: 1%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+          <img th:src="@{/static/image/userimage/4.png}" alt=""/>
+        </div>
+        <p class="weui-grid__label">
+            积分
+        </p>
+      </a>
+     
+    </div>
+
+			<div style="position: relative;width: 100%;text-align: center;overflow: hidden;">
+				<img alt="" th:src="@{/static/image/userimage/tiao.png}" width="1.5%" height="100%" style="left: 5%;top: 12px;position: relative;float: left;"/>
+				<p style="position: relative;font-size: 7px;float: left;top:-250%;line-height: 500%;left:5%;"><span style="background-color: #C0C0C0">我的项目</span></p>
+				<p style="font-size: 7px;position: relative;float: right;top:500%;line-height: 500%;right:5%;"><span style="background-color: #969696">查看我的项目</span></p>
+			</div>
+<div class="one">
+			<a href="recharge.html">
+			<p class="biao">
+				<span class="iconfont"></span>我的项目<i class="iconfont icon-jiantou"></i><c style="float:right;margin-right:10%;">查看我的项目</c>
+			</p>
+			</a>
+</div>
+
+<!-- 		<div data-role="main" class="ui-content" style="overflow:hidden;height: 10px;">
+		    <ul data-role="listview" >
+		     <li>  
+                <a>
+                    <img alt="" th:src="@{/static/image/userimage/tiao.png}" width="4%" height="30%" style="top:10%;left:1%;"/>
+                    <p style="height:100%;line-height: 100%;margin-left: -60%;">我的项目</p>
+                </a>  
+             </li>  
+		    </ul>
+		</div> -->
+
+    <div class="weui-grids">
+      <a href="demos/buttons.html" class="weui-grid js_grid"  style="width: 32.33%;margin-left: 0.5%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+                   <img th:src="@{/static/image/userimage/5.png}" alt=""/>
+        </div>
+        <p class="weui-grid__label">
+          进行中
+        </p>
+      </a>
+      <a href="demos/cell.html" class="weui-grid js_grid"    style="width: 32.33%;margin-left: 1%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+                 <img th:src="@{/static/image/userimage/6.png}" alt=""/>
+        </div>
+        <p class="weui-grid__label">
+	待评价
+        </p>
+      </a>
+      <a href="demos/form.html" class="weui-grid js_grid"    style="width: 32.33%;margin-left: 1%;background-color: #FFFFFF;">
+        <div class="weui-grid__icon">
+                  <img th:src="@{/static/image/userimage/7.png}" alt=""/>
+        </div>
+        <p class="weui-grid__label">
+    已完成
+        </p>
+      </a>
+
+     
+    </div>
+    
+    
+    			<div style="position: relative;width: 100%;text-align: center;overflow: hidden;margin-top: 4px;background-color: #fff;">
+				<img alt="" th:src="@{/static/image/userimage/tiao.png}" width="1.5%" height="100%" style="left: 5%;top: 12px;position: relative;float: left;"/>
+				<p style="position: relative;font-size: 7px;float: left;top:-250%;line-height: 500%;left:5%;"><span style="background-color: #C0C0C0;">咨询评价</span></p>
+
+			</div>
+  <!--   		<div style="position: relative;margin-top: 2px;background-color: #fff;width: 100%;text-align: center;">
+				<img alt="" th:src="@{/static/image/userimage/tiao.png}" width="2%" height="40px" style="left: 0;top: 15px;position: relative;"/>
+				<p style="height:100%;line-height: 100%;left:30%;top:-20px;position: relative;font-size: 7px;">咨询评价</p>
+			</div> -->
+
+    			<div style="position: relative;width: 100%;text-align: center;overflow: hidden;background-color: #fff;">
+				<img alt="" th:src="@{/static/image/userimage/tiao.png}" width="1.5%" height="100%" style="left: 5%;top: 12px;position: relative;float: left;"/>
+				<p style="position: relative;font-size: 7px;float: left;top:-250%;line-height: 500%;left:5%;"><span style="background-color: #C0C0C0;">人工客服</span></p>
+<p style="font-size: 7px;position: relative;float: right;top:500%;line-height: 500%;right:5%;"><span style="background-color: #6666FF">13691024892</span></p>
+			</div>
+	</div>
+	
+	
+	
+	<div data-role="page" id="pagetwo">
+	
+	
+	</div>
+    <style>
+      .weui-footer {
+        margin: 25px 0 10px 0;
+      }
+    </style>
+
+
+<!--     <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script>
+ -->
+
+</body>
+
+
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript">
+	(function($){
+	    $.fn.serializeJson=function(){
+	        var serializeObj={};  
+	        var array=this.serializeArray();  
+	        var str=this.serialize();  
+	        $(array).each(function(){  
+	            if(serializeObj[this.name]){  
+	                if($.isArray(serializeObj[this.name])){  
+	                    serializeObj[this.name].push(this.value);  
+	                }else{  
+	                    serializeObj[this.name]=[serializeObj[this.name],this.value];  
+	                }  
+	            }else{  
+	                serializeObj[this.name]=this.value;   
+	            }  
+	        });  
+	        return serializeObj;  
+	    };  
+	})(jQuery);
+	</script>
+<script th:inline="javascript">
+wx.config({
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: [[${appId}]], // 必填，公众号的唯一标识
+    timestamp: [[${timestamp}]], // 必填，生成签名的时间戳
+    nonceStr: [[${nonceStr}]], // 必填，生成签名的随机串
+    signature: [[${signature}]],// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline'
+    	,'onMenuShareAppMessage'
+    	,'onMenuShareQQ'
+    	,'onMenuShareWeibo'
+    	,'onMenuShareQZone'
+    	,'startRecord'
+    	,'stopRecord'
+    	,'onVoiceRecordEnd'
+    	,'playVoice'
+    	,'pauseVoice'
+    	,'stopVoice'
+    	,'onVoicePlayEnd'
+    	,'uploadVoice'
+    	,'downloadVoice'
+    	,'chooseImage'
+    	,'previewImage'
+    	,'uploadImage'
+    	,'downloadImage'
+    	,'translateVoice'
+    	,'getNetworkType'
+    	,'openLocation'
+    	,'getLocation'
+    	,'hideOptionMenu'
+    	,'showOptionMenu'
+    	,'hideMenuItems'
+    	,'showMenuItems'
+    	,'hideAllNonBaseMenuItem'
+    	,'showAllNonBaseMenuItem'
+    	,'closeWindow'
+    	,'scanQRCode'
+    	,'chooseWXPay'
+    	,'openProductSpecificView'
+    	,'addCard'
+    	,'chooseCard'
+    	,'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+/* 	if($("#error").val()==1){
+		alert('推荐码不存在');
+	}else if($('#error').val()==2){
+		alert('手机号不存在');
+	} */
+    
+});
+
+wx.error(function(error){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	//alert(error);
+    
+});
+
+
+</script>
+
+<!-- <script type="text/javascript" th:src="@{/static/js/recomm/recomm.js}"></script> -->
+</html>

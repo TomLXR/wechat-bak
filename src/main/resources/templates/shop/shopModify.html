@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="renderer" content="webkit"/>
+  <meta content="yes" name="apple-touch-fullscreen"/>
+	<meta content="telephone=no" name="format-detection"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta http-equiv="Expires" content="-1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="pragma" content="no-cache"/>
+  <meta name="applicable-device" content="mobile"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta http-equiv="cache-control" content="max-age=0"/>
+  <meta http-equiv="cache-control" content="no-cache"/>
+  <meta http-equiv="expires" content="0"/>
+  <link   th:href="@{/static/shop/css/page.css}"   rel="stylesheet" media="screen" type="text/css"/>
+  <script th:src="@{/static/shop/js/jquery-1.9.1.min.js}"   ></script>
+	<style>
+       img{margin:-0.5px;padding: 0;border: 0;outline:none;vertical-align:top;}
+	</style>
+</head>
+<body >
+<div class="wrap">
+     <div class="pt2-head2">
+         <a href="javascript:void(0)" id='gw-top'><img  th:src="@{/static/shop/images/toppage1.png}"  />返回</a>
+         <a href="javascript:void(0)" id='gw-close'>关闭</a>
+         <div class="ponit2-title">代付款订单</div>
+        <a href="javascript:void(0)" style="text-align:right"><img  th:src="@{/static/shop/images/more.png}"   /></a>
+     </div>
+     <div class="gw2-router">
+         <a href="javascript:void(0)" id='gw2-router1'>
+          <img  style="margin-left:3%;width:15%"   th:src="@{/static/shop/images/gw-add.jpg}"  />
+          &nbsp;&nbsp;新建收货地址
+         <p><img  th:src="@{/static/shop/images/gw-last.png}"  /></p></a>
+         <img  th:src="@{/static/shop/images/bg.jpg}" />
+     </div>
+     <table width="100%"  border="0" cellspacing="0" cellpadding="0" id="shopping">
+     <thead>  
+        <tr>
+          <td colspan="6" class="gw-shopInfo">
+            <a href="#" class="gw-shop1"><img th:src="@{/static/shop/images/gw-shop.png}"   />FIIL耳机微商城</a>
+           </td>
+        </tr>
+      </thead>
+       <tr id="product1">
+        <td class="cart_td_1"  colspan="2" >
+           <img    th:src="@{/static/shop/images/gw-goods.jpg}"    style="margin-left:4%;"/>
+        </td>
+        <td class="cart_td_21"  colspan="3" >
+         <p class="gw-sname1">FIIL随身星降噪版(NC)无线蓝牙入耳式 </p>
+          <p class="gw-sname">降低版流光银</p>         
+        </td>
+        <td class="cart_td_311">
+            <p class="gw-shell">￥699.00</p>
+            <p class="gw-shell">x1</p>
+            <br/>
+            <br/>
+        </td> 
+      </tr> 
+      <tfoot>
+        <tr><td colspan="6"><p>配送方式<span>普通快递<img  th:src="@{/static/shop/images/gw-last.png}" /></span></p></td></tr>
+        <tr><td colspan="6"><p>买家留言：<input type="text" placeholder="点击给商家留言" /></p></td></tr>
+        <tr class="gw-line"><td colspan="6"><p>合计<span class="gw-money">￥699.00</span></p></td></tr>
+        <tr class="gw-line"><td colspan="6"><p>优惠券码<span>使用优惠券<img  th:src="@{/static/shop/images/gw-last.png}"  /></span></p></td></tr>
+        <tr class="gw-line"><td colspan="6"><p>短信通知收货人
+           <input class="tgl tgl-light" id="cb1" type="checkbox" />
+           <label class="tgl-btn" for="cb1"></label>
+        </p></td></tr>
+        <tr class="gw-line"><td colspan="6" ><p>商品金额<span class="gw-shell">￥699.00</span></p></td></tr>
+      </tfoot>
+      
+   </table>
+ <ul class="gw-count">    
+    <li id="gw-count12">
+       <p>合计：<span>￥699.00</span></p>
+    </li>  
+    <li id="gw-count13" ><a href="javascript:void(0)">提交订单</a></li>  
+ </ul>    
+ </div>  
+</body>
+</html>

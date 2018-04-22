@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html    xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="renderer" content="webkit"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+	<meta content="telephone=no" name="format-detection"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta http-equiv="Expires" content="-1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="pragma" content="no-cache"/>
+  <meta name="applicable-device" content="mobile"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta http-equiv="cache-control" content="max-age=0"/>
+  <meta http-equiv="cache-control" content="no-cache"/>
+  <meta http-equiv="expires" content="0"/>
+	<meta name='renderer' content="webkit" />
+<link type="text/css" rel="stylesheet" th:href="@{/static/shop/css/base.css}"  />
+<link type="text/css" rel="stylesheet" th:href="@{/static/shop/css/module.css}"   />
+
+  
+<script type="text/javascript" th:src="@{/static/shop/js/jquery-1.9.1.min.js}" ></script>
+<script type="text/javascript" th:src="@{/static/shop/js/shopping.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/qrcode.js}"></script>
+
+
+</head>
+<body>
+<!-- <div id="qrcode" style="width: 200px;height: 200px;">
+
+</div> -->
+<!--头部开始-->
+<!-- <div class="pt2-head2"> -->
+         <!-- <a href="javascript:void(0)" id='gw-top'><img   th:src="@{/static/shop/images/toppage1.png}"  />返回</a> -->
+         <!-- <a href="javascript:void(0)" id='gw-close'>关闭</a> -->
+         <!-- <div class="ponit2-title">购物车</div> -->
+        <!-- <a href="javascript:void(0)" style="text-align:right"><img  th:src="@{/static/shop/images/more.png}"  /></a> -->
+<!-- </div> -->
+<!--头部结束-->
+<div class="shopping">
+  <!-- <input value="clear" type="button"  onclick="clr()"/> -->
+  <div class="shop-group-item">
+    <div class="shop-name">
+      <input type="checkbox" class="check goods-check shopCheck"  th:checked="checked"/>
+      <h4><a href="#">雷恩特商城订单</a></h4>
+      <div class="coupons"><span  id="showlist">编辑</span></div>
+    </div>
+    <ul >
+      <li  th:each="project:${projects}">
+        <div class="shop-info">
+          <input type="checkbox" class="check goods-check goodsCheck"  th:checked="checked" th:value="${project.id}"/>
+          <div class="shop-info-img"><a href="#"><img  th:src="${project.imageUrl}"  /></a></div>
+          <div class="shop-info-text">
+            <h4 th:text="${project.projectName}" th:name="${project.id}"></h4>
+            <!-- <div class="shop-brief"><span>降低版流光银</span></div> -->
+            <div class="shop-price">
+              <div class="shop-pices">积分<b class="price" th:text="${project.discount eq 1}?${project.money}:${project.money * project.discount}">100.00</b></div>
+              <div class="shop-arithmetic">
+                <a href="javascript:;" class="minus">-</a>
+                <span class="num"  th:text="${project.amount}"></span>
+                <a href="javascript:;" class="plus">+</a>
+              </div>
+            </div>
+          </div>
+          <div style="" class="deletea">删除</div>
+          </div>
+
+      </li>
+
+    </ul>
+    <div class="shopPrice" style="display:none">本店总计：￥<span class="shop-total-amount ShopTotal">0.00</span></div>
+  </div>
+</div>
+
+<div class="shop-empty">
+    <img  th:src="@{/static/shop/images/empty.png}"  />
+    <p>亲，购物车空空的耶<span><img  th:src="@{/static/shop/images/able.png}" /></span>赶紧去挑好东西吧</p>
+    <a href="/">去逛逛</a>
+</div>
+<div class="del-shadow">
+  <ul class="del-main">
+               <li class="del-title">确定要删除商品吗</li>
+               <li>
+                 <span class="del-cancel" style="border-left:none;">取消</span>
+                 <span class="del-sure">确定</span>
+                 <div style="clear:both"></div>
+               </li>
+               
+   </ul>
+</div>
+<div class="shop-give">
+  <p></p>
+  <img    th:src="@{/static/image/swt-bg.jpg}"  />
+  <div>
+      <!-- <div id="qrcode" ></div> -->
+      <img th:src="@{/static/image/swt-bg.jpg}"  id="ewcode"  />
+      <h3>扫描领取兑换码</h3>
+      <h3>领取成功</h3>
+      <h4>111</h4>
+  </div>
+</div>
+<div class="payment-bar">
+  <div class="all-checkbox"><input type="checkbox" class="check goods-check" id="AllCheck"  th:checked="checked"/>全选</div>
+  <div class="shop-total">
+    <strong>总价：<b class="total" id="AllTotal" th:text="${ct}">0.00</b></strong>
+    <span>不含运费</span>
+  </div>
+  <a href="#" class="settlement" id="settlement" onclick="settle()" style="background: rgb(255, 68, 68); color: rgb(255, 255, 255);">结算</a>
+</div>
+	<script type="text/javascript">
+	(function($){  
+	    $.fn.serializeJson=function(){
+	        var serializeObj={};  
+	        var array=this.serializeArray();  
+	        var str=this.serialize();  
+	        $(array).each(function(){  
+	            if(serializeObj[this.name]){  
+	                if($.isArray(serializeObj[this.name])){  
+	                    serializeObj[this.name].push(this.value);  
+	                }else{  
+	                    serializeObj[this.name]=[serializeObj[this.name],this.value];  
+	                }  
+	            }else{  
+	                serializeObj[this.name]=this.value;   
+	            }  
+	        });  
+	        return serializeObj;  
+	    };  
+	})(jQuery);
+	</script>
+	<script th:inline="javascript">
+	
+	// whether more page is enabled
+	basepath=[[${basepath}]];
+	code=[[${code}?'']];
+	</script>
+
+	<script type="text/javascript">
+	
+		function settle(){
+			
+				if($('.settlement').html()=='结算'){
+		 			 $.ajax({
+		 				url : basepath+"/order/orderSettle",
+		 				error : function(menu) {
+		  
+		 					return false;
+		 				},
+		 				success : function(result) {
+		 					if(result.code!='' ){
+		 						$('#AllTotal').html(0.00);
+		 						$('ul').empty();
+		 						$(".shop-give").find('h4').html("恭喜您成功兑换<br/>保存二维码到本地以便兑换");
+		 						$('h4').css("text-align","center");
+
+		 						markcode(result.code);
+		 						$(".shop-give").show();
+		 			               $(".shop-give >p").click(function(){
+		 			                $(".shop-give").hide();
+		 			               });
+		 						alert(result.rs);
+
+		 					}else{
+		 						alert(result.rs);
+		 					}
+		 				}
+		 			}); 					
+					
+				}else if($('.settlement').html()=='清空'){
+				
+		 			 $.ajax({
+			 				url : basepath+"/order/clear",
+			 				error : function(menu) {
+			  
+			 					return false;
+			 				},
+			 				success : function(result) {
+		 						$('#AllTotal').html(0.00);
+		 						$('ul').empty();
+		 						alert(result.rs);
+			 				}
+			 			}); 								
+				}
+			
+
+ 		}
+		
+		
+		function markcode(code){
+	    	ewcode.src="../EWma?code="+code;
+		}
+
+
+	</script>
+</body>
+</html>

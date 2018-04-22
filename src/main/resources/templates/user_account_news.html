@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>我的账户</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" type="text/css" th:href="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css}" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/[version]/jquery.mobile-[version].min.css" />
+<script type="text/javascript" th:src="@{/static/Jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/jquery.mobile-1.4.5/jquery.mobile-1.4.5.js}"></script>
+</head>
+<body class="ui-mobile-viewport ui-overlay-c">
+
+	<div data-role="page" id="pageone" data-url="pageone" tabindex="0" class="ui-page ui-body-c ui-page-footer-fixed ui-page-active" style="padding-bottom: 42px; min-height: 428px;">
+		<div data-role="header" data-theme="a" class="ui-header ui-bar-a" role="banner">
+			<h1 class="ui-title" role="heading" aria-level="1">我的账户</h1>
+		</div>
+		<div data-role="content" class="ui-content" role="main">
+			<div class="ui-grid-a">
+				<div class="ui-block-a" style="border-right: 1px solid black;">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">
+							<img th:src="@{/static/image/head_img.jpg}" />
+						</div>
+						<div class="ui-block-b">
+							<p>我的名字</p>
+							<p>会员</p>
+							<p>9999+</p>
+						</div>
+					</div>
+				</div>
+				<div class="ui-block-b">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">分享</div>
+						<div class="ui-block-b">
+							<button data-icon="arrow-r" data-iconpos="notext">按钮</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="ui-grid-c" style="text-align: center;">
+				<div class="ui-block-a" style="border: 1px solid black;">
+					<img th:src="@{/static/image/yue.jpg}" /><br />余额
+				</div>
+				<div class="ui-block-b" style="border: 1px solid black;">
+					<img th:src="@{/static/image/daijinquan.jpg}" /><br />代金券
+				</div>
+				<div class="ui-block-c" style="border: 1px solid black;">
+					<img th:src="@{/static/image/huaban.jpg}" /><br />花瓣
+				</div>
+				<div class="ui-block-d" style="border: 1px solid black;">
+					<span><img th:src="@{/static/image/jifen.jpg}" /><br />积分</span>
+				</div>
+			</div>
+			<div class="ui-grid-a">
+				<br /> <br />
+				<div class="ui-block-a">我的项目</div>
+				<div class="ui-block-b" style="text-align: right;">
+					<div class="ui-grid-a">
+						<div class="ui-block-a">查看我的项目</div>
+						<div class="ui-block-b" style="text-align: right;">
+							<button data-icon="arrow-r" data-iconpos="notext">按钮</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui-grid-b" style="text-align: center;">
+				<div class="ui-block-a" style="border: 1px solid black;">
+					<img th:src="@{/static/image/jinxingzhong.jpg}" /><br />进行中
+				</div>
+				<div class="ui-block-b" style="border: 1px solid black;">
+					<img th:src="@{/static/image/daipingjia.jpg}" /><br />待评价
+				</div>
+				<div class="ui-block-c" style="border: 1px solid black;">
+					<img th:src="@{/static/image/yiwancheng.jpg}" /><br />已完成
+				</div>
+			</div>
+			<br />
+			<ul data-role="listview">
+				<li><a href="#">咨询评价</a></li>
+				<li><a href="#">人工客服</a></li>
+			</ul>
+			<ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<li data-role="divider" class="ui-li ui-li-static ui-btn-up-d ui-first-child">咨询评价<a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"></a></li>
+				<li data-role="divider" class="ui-li ui-li-static ui-btn-up-d ui-first-child">人工客服<a href="#" data-role="button" data-icon="arrow-r" data-iconpos="notext"></a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="a" class="ui-footer ui-bar-a ui-footer-fixed slideup" role="contentinfo">
+			<h1 class="ui-title" role="heading" aria-level="1">页脚</h1>
+		</div>
+	</div>
+
+</body>
+</html>

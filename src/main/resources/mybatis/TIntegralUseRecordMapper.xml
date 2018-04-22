@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gasq.bdp.logn.mapper.TIntegralUseRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.gasq.bdp.logn.model.TIntegralUseRecord" >
+    <id column="get_integral_id" property="getIntegralId" jdbcType="BIGINT" />
+    <id column="project_id" property="projectId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="integral" property="integral" jdbcType="BIGINT" />
+    <result column="use_date_time" property="useDateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    get_integral_id, project_id, user_id, integral, use_date_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_integral_use_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecordKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_integral_use_record
+    where get_integral_id = #{getIntegralId,jdbcType=BIGINT}
+      and project_id = #{projectId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecordKey" >
+    delete from t_integral_use_record
+    where get_integral_id = #{getIntegralId,jdbcType=BIGINT}
+      and project_id = #{projectId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecordExample" >
+    delete from t_integral_use_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecord" >
+    insert into t_integral_use_record (get_integral_id, project_id, user_id, 
+      integral, use_date_time)
+    values (#{getIntegralId,jdbcType=BIGINT}, #{projectId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{integral,jdbcType=BIGINT}, #{useDateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecord" >
+    insert into t_integral_use_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="getIntegralId != null" >
+        get_integral_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="useDateTime != null" >
+        use_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="getIntegralId != null" >
+        #{getIntegralId,jdbcType=BIGINT},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=BIGINT},
+      </if>
+      <if test="useDateTime != null" >
+        #{useDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecordExample" resultType="java.lang.Integer" >
+    select count(*) from t_integral_use_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_integral_use_record
+    <set >
+      <if test="record.getIntegralId != null" >
+        get_integral_id = #{record.getIntegralId,jdbcType=BIGINT},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.integral != null" >
+        integral = #{record.integral,jdbcType=BIGINT},
+      </if>
+      <if test="record.useDateTime != null" >
+        use_date_time = #{record.useDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_integral_use_record
+    set get_integral_id = #{record.getIntegralId,jdbcType=BIGINT},
+      project_id = #{record.projectId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      integral = #{record.integral,jdbcType=BIGINT},
+      use_date_time = #{record.useDateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecord" >
+    update t_integral_use_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=BIGINT},
+      </if>
+      <if test="useDateTime != null" >
+        use_date_time = #{useDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where get_integral_id = #{getIntegralId,jdbcType=BIGINT}
+      and project_id = #{projectId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gasq.bdp.logn.model.TIntegralUseRecord" >
+    update t_integral_use_record
+    set user_id = #{userId,jdbcType=BIGINT},
+      integral = #{integral,jdbcType=BIGINT},
+      use_date_time = #{useDateTime,jdbcType=TIMESTAMP}
+    where get_integral_id = #{getIntegralId,jdbcType=BIGINT}
+      and project_id = #{projectId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+/*购物车*/
+.shopping{clear:both;overflow:hidden;height:auto;padding-bottom: 60px;}
+.shop-group-item{margin-bottom:5px;}
+.shop-group-item ul li{border-bottom:1px solid #fff;}
+.shop-group-item ul li:last-child{border-bottom:none;}
+
+.shop-name{background:#fff;height:35px;line-height:35px;padding:0 15px;position:relative;}
+.shop-name h4{float:left;font-size:14px;background:url(../images/gw-shop.png) no-repeat left center;background-size:20px 20px;padding-left:25px;margin-left: 28px;}
+.shop-name .coupons{float:right;}
+.shop-name .coupons span{display:inline-block;padding:0 5px;}
+.shop-name .coupons em{color:#e0e0e0;}
+
+.shop-info{background:#f5f5f5;height:120px;padding:0 15px;position:relative;}
+.shop-info .checkbox{background:url(../images/icon/icon_radio3.png) no-repeat left center;background-size:20px 20px;position:absolute;top:50%;left:15px;margin-top:-60px;width:20px;height:120px;}
+.shop-info .checkbox1{background:url(../images/icon/icon_radio4.png) no-repeat left center;background-size:20px 20px;position:absolute;top:50%;left:15px;margin-top:-60px;width:20px;height:120px;}
+.shop-info .shop-info-img{position:absolute;top:15px;left:45px;width:90px;height:90px;}
+.shop-info .shop-info-img img{width:100%;height:100%;}
+.shop-info .shop-info-text{margin-left:130px;padding:15px 0;}
+.shop-info .shop-info-text h4{font-size:14px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow: hidden;}
+.shop-info .shop-info-text .shop-brief{height:25px;line-height:25px;font-size:12px;color:#81838e;white-space:nowrap;}
+.shop-info .shop-info-text .shop-brief span{display:inline-block;margin-right:8px;}
+.shop-info .shop-info-text .shop-price{height:24px;line-height:24px;position:relative;}
+.shop-info .shop-info-text .shop-price .shop-pices {color:red;font-size:16px;}
+.shop-info .shop-info-text .shop-arithmetic{right:0px;top:0;width:84px;box-sizing:border-box;white-space:nowrap;height:100%;border:1px solid #e0e0e0;}
+.shop-info .shop-info-text .shop-arithmetic a{display:inline-block;width:23px;height:22px;line-height:22px;text-align:center;background:#fff;font-size:16px;}
+.shop-info .shop-info-text .shop-arithmetic .minus{border-right:1px solid #e0e0e0;}
+.shop-info .shop-info-text .shop-arithmetic .failed{color:#d1d1d1;}
+.shop-info .shop-info-text .shop-arithmetic .plus{border-left:1px solid #e0e0e0;}
+.shop-info .shop-info-text .shop-arithmetic .num{width:32px;text-align:center;border:none;display: inline-block;height:100%;box-sizing:border-box;vertical-align:top;margin:0 -6px;}
+.shopPrice{background:#fff;height:35px;line-height:35px;padding:0 15px;text-align:right;}
+.shopPrice span{color:#f00;}
+
+
+
+
+.payment-bar{clear:both;overflow:hidden;width:100%;height:49px;position:fixed;bottom:0;border-top:1px solid #e0e0e0;background:#fff;}
+.payment-bar .all-checkbox{float:left;line-height:49px;padding-left:40px;}
+.payment-bar .shop-total{float:left;-webkit-box-flex:1.0;box-flex:1.0;margin:9px 20px 9px 35px;}
+.payment-bar .shop-total strong{display:block;font-size:16px;}
+.payment-bar .shop-total span{display:block;font-size:12px;}
+.payment-bar .settlement{display:inline-block;float:right;width:100px;height:49px;line-height:49px;text-align:center;color:#fff;font-size:16px;background:#ccc;}
+
+
+
+.del-shadow{position: fixed; width:100%;height:100%;background:rgba(0,0,0,0.5);
+    top:0px;left:0px;z-index:500;display: none}
+.del-main {width:50%;margin-top:80%;margin-left:25%;background:#fff;color:#333;
+    font-size:1rem;line-height:3rem;/*padding:3% 0% 0%;*/-webkit-border-radius:5px;border-radius:5px;}
+.del-main .del-title {padding-left:5%;border-bottom:1px solid #eaeaea;}
+.del-main li:nth-child(2) >span{display:inline-block;width:50%;float: left;
+    border-left:1px solid #eaeaea;text-align: center;color:#333;cursor:pointer;
+    box-sizing: border-box;}
+.del-main li:nth-child(2) >span.del-sure{ color:#24d620 }
+
+/*免费送*/
+.shop-give {margin-top:-50%;margin-left:18%;width:250px;height:300px;color:#333;position: fixed;z-index:9;
+	background:url("../images/swt-bg.jpg");
+background-size:100% 100%;
+-webkit-border-radius:5px;border-radius:5px;display:none;}
+/*.shop-give > img{width:100%;border-radius:5px;}*/
+.shop-give > div {position: absolute;top:9%;width:90%;left:5%;}
+.shop-give > div  >img {width:120px;margin:0 auto;display: block;}
+.shop-give > div  > h3:nth-child(2) {font-size:1.2rem;color:#ffde00;text-align: center;margin-top:5%;}
+.shop-give > div  > h3:nth-child(3) {font-size:1.3rem;color:#ff4200;text-align: center;margin-top:8%;}
+.shop-give > div  > h4:nth-child(4) {font-size:1.1rem;line-height:1.4rem;height:4.2rem;overflow:hidden;color:#103b85;text-align: center;}
+.shop-give  > p {width:2rem;height:2rem;/*border:1px solid #000;*/position: absolute;right:1%;top:1%; }   
+/*.shop-give  > h4 {font-size:1.2rem;height:4.2rem;overflow:hidden;color:#103b85;position: absolute;top: 77%;padding: 0% 6%;    text-align: center;}
+.shop-give  > h3 {font-size:1.2rem;color:#ffde00;position: absolute;top: 50%;width:100%;  text-align: center;}*/
+/*购物车*/
+.pt2-head2 {width:100%;background:#1b1a1f;height: 3rem;}
+.pt2-head2 > a { display:inline-block;width:18%;line-height:3rem;float: left;color:#fff;font-size:1rem; }
+.pt2-head2 > a#gw-top {}
+.pt2-head2 > div {width:51%;float: left;line-height: 3rem;font-size:1.4rem;color:#fff;text-align:center;}
+.pt2-head2 > a > img { width:38%;vertical-align: middle;display: inline-block; }
+.pt2-head2 > a#gw-close {width:12%;float: left;text-align: center}
+/*购物车*/
+/*.shop-empty {width:100%;display: none;}
+.shop-empty  > img {width:30%;display:block;margin:0 auto;margin-top:40%;}
+.shop-empty > p {font-size:1rem;text-align:center;color:#6a6a6a;margin-top:4%;}
+.shop-empty > p >span {display:inline-block;}
+.shop-empty > p >span > img {width:10px;vertical-align: middle;margin:0 2px;}
+.shop-empty > a {display:block;width:20%;margin:4% auto;text-align:center;font-size:1rem;line-height:1.6rem;border:1px solid #c2c2c2;-webkit-border-radius:8px;border-radius:8px;}*/
+/*iphone5*/
+@media only screen and (max-width: 349px) and (min-width: 320px){
+.shop-give {margin-left:10%;margin-right: -130px;}
+}

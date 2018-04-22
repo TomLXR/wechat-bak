@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- saved from url=(0113)http://webapp.szreturn.com/Index.asp?FromOpenId=omaWIt9qJBXoadYPE4YLlblXhIP4&OpenId=omaWIt6udX0A3FeF6syz0ZYIc3K8# -->
+<html class="pixel-ratio-1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Content-Type" />
+<title>蕾特恩美容医院·祛痘</title>
+<link rel="shortcut icon" href="http://webapp.szreturn.com/favicon.ico" />
+<link rel="stylesheet" th:href="@{/static/css/Style.css}" />
+<link rel="stylesheet" th:href="@{/static/css/Sm.css}" />
+<link rel="stylesheet" th:href="@{/static/css/Sm-extend.css}" />
+<link rel="stylesheet"
+	th:href="@{/static/css/font_p0jt4bjt679icnmi.css}" />
+
+<script type="text/javascript" th:href="@{/static/js/PubFun.js}"
+	charset="utf-8"></script>
+<script language="javascript" th:href="@{/static/js/Ajax.js}"></script>
+<script type="text/javascript" th:href="@{/static/js/jweixin-1.2.0.js}"></script>
+<script language="javascript" th:href="@{/static/js/sSdk.js}" id="JsSdk"
+	appid="wx83d2a477b6cf30c0" timestamp="1516587627"
+	noncestr="gbNmaPgsXXI1YzEV"
+	signature="09f0d40f8a007c2389c2049e01b3495436d99eac"
+	openid="omaWIt6udX0A3FeF6syz0ZYIc3K8" fromorganid=""></script>
+<script type="text/javascript"
+	src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+</head>
+<body style="text-align: center;">
+
+<h3>订单功能未开放</h3>
+
+	<script th:inline="javascript">
+	
+	
+	</script>
+<!-- 	<script type="text/javascript" th:src="@{/static/js/Zepto.js}"
+		charset="utf-8"></script> -->
+
+
+</body>
+<script th:inline="javascript">
+wx.config({
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: [[${appId}]], // 必填，公众号的唯一标识
+    timestamp: [[${timestamp}]], // 必填，生成签名的时间戳
+    nonceStr: [[${nonceStr}]], // 必填，生成签名的随机串
+    signature: [[${signature}]],// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline'
+    	,'onMenuShareAppMessage'
+    	,'onMenuShareQQ'
+    	,'onMenuShareWeibo'
+    	,'onMenuShareQZone'
+    	,'startRecord'
+    	,'stopRecord'
+    	,'onVoiceRecordEnd'
+    	,'playVoice'
+    	,'pauseVoice'
+    	,'stopVoice'
+    	,'onVoicePlayEnd'
+    	,'uploadVoice'
+    	,'downloadVoice'
+    	,'chooseImage'
+    	,'previewImage'
+    	,'uploadImage'
+    	,'downloadImage'
+    	,'translateVoice'
+    	,'getNetworkType'
+    	,'openLocation'
+    	,'getLocation'
+    	,'hideOptionMenu'
+    	,'showOptionMenu'
+    	,'hideMenuItems'
+    	,'showMenuItems'
+    	,'hideAllNonBaseMenuItem'
+    	,'showAllNonBaseMenuItem'
+    	,'closeWindow'
+    	,'scanQRCode'
+    	,'chooseWXPay'
+    	,'openProductSpecificView'
+    	,'addCard'
+    	,'chooseCard'
+    	,'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+/* 	if($("#error").val()==1){
+		alert('推荐码不存在');
+	}else if($('#error').val()==2){
+		alert('手机号不存在');
+	} */
+    
+});
+
+wx.error(function(error){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	//alert(error);
+    
+});
+
+
+</script>
+
+</html>

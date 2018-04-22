@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="applicable-device" content="mobile"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+
+    <link   th:href="@{/static/projectms/css/gpage.css}"  rel="stylesheet" media="screen" type="text/css"/>
+    <script type="text/javascript" th:src="@{/static/projectms/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/qrcode.js}"></script>
+    <script type="text/javascript" th:src="@{/static/projectms/js/shop-com.js}"></script>
+    <style>
+       img{margin:-0.5px;padding: 0;border: 0;outline:none;vertical-align:top;}
+       .tab-shop >a{color:#000;line-height:3rem;font-size:1rem;display:block;width:50%;text-align:center;box-sizing: border-box;float: left;}
+    </style>
+
+</head>
+<body>
+<form th:action="@{/project/projectDetail}" id="sub"  method="post">
+<input id="end1" name="end1"  th:value="${end1}" hidden="true"/>
+<input id="end2" name="end2"  th:value="${end2}" hidden="true"/>
+<input id="tabIndex" name="tabIndex" th:value="${tabIndex}" hidden="true"/>
+<input id="more" name="more"  hidden="true"/>
+
+     <div class="shop-give">
+      <p></p>
+       <!-- <img src="images/swt-bg.jpg"/>  -->
+      <div>
+                <img th:src="@{/static/image/swt-bg.jpg}"  id="ewcode"  />
+          <h3>扫描领取兑换码</h3>
+          <h3>领取成功</h3>
+          <h4></h4>
+      </div>
+    </div>
+<div class="warp">
+    <!--头部开始-->
+<!--     <div class="gcom-head2">
+        <a href="javascript:void(0)" id='gw-top'><img th:src="@{/static/projectms/images/toppage1.png}" /></a>
+        <div class="ponit2-title" style="text-align: center;">我的订单</div>
+        <a href="javascript:void(0)" style=""><img  th:src="@{/static/projectms/images/more.png}"  /></a>
+    </div> -->
+    <!--头部结束-->
+    <div class="tab-shop">
+         <a href="javascript:void(0)">进行中</a>
+         <a href="javascript:void(0)">已完成</a>
+         <div class="clear"></div>
+     </div>
+     <ul class="com-shop">
+          <li th:each="order : ${orderList}">
+             <div class="com-top">
+                 <h4>订单时间：<span     th:text="${#dates.format(order.createTime,'yyyy-MM-dd HH:mm:ss')}"   >2018年3月27日</span></h4>
+                 <p class="com-code" th:onclick="|showew('${order.bugCode}')|">兑换码</p>
+              </div>
+              <div class="module" th:each="project : ${order.plist}" > 
+                 <div class="com-info-img"><a href="#"><img th:src="${project.imageUrl}"  /></a></div>
+                 <div class="com-info-text">
+                      <h4 th:text="${project.projectName}">FIIL随身星降噪版(NC)无线蓝牙入耳式</h4>
+                      <div class="com-brief"><span></span></div>
+                      <div class="com-price">
+                            <p class="com-pices">积分<b class="price" th:text="${ project.discount * project.money}">10.00</b></p>
+                            <p><del th:style="'display:' +${project.discount eq 1}?'none':'block' " th:text="${project.money}">￥59.00</del></p>
+                            <p class="numm"><span>x</span><span class="num" th:text="${project.amount}">1</span></p>
+                      </div>
+                </div>
+             </div>
+
+             <div class="o-total-price"  > 
+                  <div class="cont" >
+                            <b th:text="${order.amount}" style="display: none"></b>
+          <b th:text="${order.total}"  style="display: none"></b>
+                       <span>共<b th:text="${order.amount}">2</b>件商品 &nbsp;&nbsp;&nbsp;&nbsp; 合计:积分<b th:text="${order.total}"></b></span> 
+                       <span></span>   
+                       <!-- <span>(含运费<b>￥0.00</b>)</span>   -->  
+                 </div> 
+             </div>
+<!--             <div class="com-info-ask">
+                  <p>更多</p>
+                  <a href="javascript:void(0)">查看物流</a>
+                  <a href="javascript:void(0)">卖了换钱</a>
+                  <a href="javascript:void(0)">追加评论</a>
+            </div> -->
+            <div class="clear"></div>
+          </li>
+     </ul>
+<div class="com-tell" id="morepage" style="width: 100%;margin:4%;text-align: center;font-size:1.0rem; ">没有更多数据</div>
+</div>       
+</form>
+</body>
+	<script th:inline="javascript">
+	   var isMoreEnable=[[${isMoreEnable}]];
+	   var end1=[[${end1}]];
+	   var end2=[[${end2}]];
+	   var tabIndex=[[${tabIndex}]];
+	   var ct=[[${ct}]];
+	</script>
+<script>
+   $('.tab-shop>a').click(function(){
+        $(this).addClass("tabon").siblings().removeClass("tabon");
+        if($(this).html()=='进行中'){
+        		$('#tabIndex').val(0);
+        }
+        if($(this).html()=='已完成'){
+        		$('#tabIndex').val(1);
+        }
+        $('#sub').submit();
+   })
+   $('#morepage').click(function(){
+	   if($('.tab-shop>a.tabon').html()=='进行中'){
+		   $('#tabIndex').val(0);
+	   }
+	   if($('.tab-shop>a.tabon').html()=='已完成'){
+		   $('#tabIndex').val(1);
+	   }	
+			$('#more').val('yes');
+			$('#sub').submit();
+   });
+	window.onload=function(){
+	   if(tabIndex==0){
+		   $('.tab-shop').find('a:first()').addClass("tabon");
+	   }else if(tabIndex==1){
+		   $('.tab-shop').find('a:not(:first())').addClass("tabon");		   
+	   }
+	   
+	   if(ct==0){
+		   
+		   document.getElementById('morepage').style.display='none';
+	   }
+ 		if(isMoreEnable==true){
+			document.getElementById('morepage').innerHTML='没有更多数据';
+			document.getElementById('morepage').style.cursor="pointer";
+		}else{
+			document.getElementById('morepage').innerHTML='查看更多数据';
+			document.getElementById('morepage').style.cursor="default";
+			
+		} 
+	   
+   }
+	function markcode(code){
+    	ewcode.src="../EWma?code="+code;
+	}
+
+   
+   	function showew(code){
+   		
+   		$(".shop-give").find('h4').html("恭喜您成功兑换<br/>");
+			$('h4').css("text-align","center");
+
+			markcode(code);
+			$(".shop-give").show();
+            $(".shop-give >p").click(function(){
+             $(".shop-give").hide();
+            });
+   		$('.shop-give').show();
+   	}
+</script>
+</html>
+

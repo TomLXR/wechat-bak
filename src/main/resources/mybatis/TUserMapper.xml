@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gasq.bdp.logn.mapper.TUserMapper">
+  <resultMap id="BaseResultMap" type="com.gasq.bdp.logn.model.TUser">
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="sex" jdbcType="SMALLINT" property="sex" />
+    <result column="user_type" jdbcType="SMALLINT" property="userType" />
+    <result column="user_source" jdbcType="CHAR" property="userSource" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="recom_code" jdbcType="VARCHAR" property="recomCode" />
+    <result column="history_integral" jdbcType="BIGINT" property="historyIntegral" />
+    <result column="valid_integral" jdbcType="BIGINT" property="validIntegral" />
+    <result column="consume_integral" jdbcType="BIGINT" property="consumeIntegral" />
+    <result column="out_date_integral" jdbcType="BIGINT" property="outDateIntegral" />
+    <result column="referrer_user_id" jdbcType="BIGINT" property="referrerUserId" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="credit_score" jdbcType="BIGINT" property="creditScore" />
+    <result column="user_img_url" jdbcType="VARCHAR" property="userImgUrl" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="device_os" jdbcType="CHAR" property="deviceOs" />
+    <result column="app_token" jdbcType="VARCHAR" property="appToken" />
+    <result column="wx_pub_open_id" jdbcType="VARCHAR" property="wxPubOpenId" />
+    <result column="growth" jdbcType="BIGINT" property="growth" />
+    <result column="grade" jdbcType="BIGINT" property="grade" />
+    <result column="plus_flag" jdbcType="CHAR" property="plusFlag" />
+    <result column="plus_expiry_date" jdbcType="TIMESTAMP" property="plusExpiryDate" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_id, mobile_phone, nick_name, user_name, sex, user_type, user_source, password, 
+    recom_code, history_integral, valid_integral, consume_integral, out_date_integral, 
+    referrer_user_id, birthday, telephone, email, credit_score, user_img_url, last_login, 
+    device_os, app_token, wx_pub_open_id, growth, grade, plus_flag, plus_expiry_date, 
+    status, register_time
+  </sql>
+  <select id="selectByExample" parameterType="com.gasq.bdp.logn.model.TUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gasq.bdp.logn.model.TUserExample">
+    delete from t_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gasq.bdp.logn.model.TUser">
+    insert into t_user ( mobile_phone, nick_name, 
+      user_name, sex, user_type, 
+      user_source, password, recom_code, 
+      history_integral, valid_integral, consume_integral, 
+      out_date_integral, referrer_user_id, birthday, 
+      telephone, email, credit_score, 
+      user_img_url, last_login, device_os, 
+      app_token, wx_pub_open_id, growth, 
+      grade, plus_flag, plus_expiry_date, 
+      status, register_time)
+    values ( #{mobilePhone,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{sex,jdbcType=SMALLINT}, #{userType,jdbcType=SMALLINT}, 
+      #{userSource,jdbcType=CHAR}, #{password,jdbcType=VARCHAR}, #{recomCode,jdbcType=VARCHAR}, 
+      #{historyIntegral,jdbcType=BIGINT}, #{validIntegral,jdbcType=BIGINT}, #{consumeIntegral,jdbcType=BIGINT}, 
+      #{outDateIntegral,jdbcType=BIGINT}, #{referrerUserId,jdbcType=BIGINT}, #{birthday,jdbcType=DATE}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{creditScore,jdbcType=BIGINT}, 
+      #{userImgUrl,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP}, #{deviceOs,jdbcType=CHAR}, 
+      #{appToken,jdbcType=VARCHAR}, #{wxPubOpenId,jdbcType=VARCHAR}, #{growth,jdbcType=BIGINT}, 
+      #{grade,jdbcType=BIGINT}, #{plusFlag,jdbcType=CHAR}, #{plusExpiryDate,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=TINYINT}, #{registerTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gasq.bdp.logn.model.TUser">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="userSource != null">
+        user_source,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="recomCode != null">
+        recom_code,
+      </if>
+      <if test="historyIntegral != null">
+        history_integral,
+      </if>
+      <if test="validIntegral != null">
+        valid_integral,
+      </if>
+      <if test="consumeIntegral != null">
+        consume_integral,
+      </if>
+      <if test="outDateIntegral != null">
+        out_date_integral,
+      </if>
+      <if test="referrerUserId != null">
+        referrer_user_id,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="creditScore != null">
+        credit_score,
+      </if>
+      <if test="userImgUrl != null">
+        user_img_url,
+      </if>
+      <if test="lastLogin != null">
+        last_login,
+      </if>
+      <if test="deviceOs != null">
+        device_os,
+      </if>
+      <if test="appToken != null">
+        app_token,
+      </if>
+      <if test="wxPubOpenId != null">
+        wx_pub_open_id,
+      </if>
+      <if test="growth != null">
+        growth,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="plusFlag != null">
+        plus_flag,
+      </if>
+      <if test="plusExpiryDate != null">
+        plus_expiry_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="registerTime != null">
+        register_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=SMALLINT},
+      </if>
+      <if test="userSource != null">
+        #{userSource,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="recomCode != null">
+        #{recomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="historyIntegral != null">
+        #{historyIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="validIntegral != null">
+        #{validIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="consumeIntegral != null">
+        #{consumeIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="outDateIntegral != null">
+        #{outDateIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="referrerUserId != null">
+        #{referrerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="creditScore != null">
+        #{creditScore,jdbcType=BIGINT},
+      </if>
+      <if test="userImgUrl != null">
+        #{userImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceOs != null">
+        #{deviceOs,jdbcType=CHAR},
+      </if>
+      <if test="appToken != null">
+        #{appToken,jdbcType=VARCHAR},
+      </if>
+      <if test="wxPubOpenId != null">
+        #{wxPubOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="growth != null">
+        #{growth,jdbcType=BIGINT},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=BIGINT},
+      </if>
+      <if test="plusFlag != null">
+        #{plusFlag,jdbcType=CHAR},
+      </if>
+      <if test="plusExpiryDate != null">
+        #{plusExpiryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="registerTime != null">
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gasq.bdp.logn.model.TUserExample" resultType="java.lang.Long">
+    select count(*) from t_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_user
+    <set>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.mobilePhone != null">
+        mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickName != null">
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=SMALLINT},
+      </if>
+      <if test="record.userType != null">
+        user_type = #{record.userType,jdbcType=SMALLINT},
+      </if>
+      <if test="record.userSource != null">
+        user_source = #{record.userSource,jdbcType=CHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recomCode != null">
+        recom_code = #{record.recomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.historyIntegral != null">
+        history_integral = #{record.historyIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="record.validIntegral != null">
+        valid_integral = #{record.validIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="record.consumeIntegral != null">
+        consume_integral = #{record.consumeIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="record.outDateIntegral != null">
+        out_date_integral = #{record.outDateIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="record.referrerUserId != null">
+        referrer_user_id = #{record.referrerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.telephone != null">
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creditScore != null">
+        credit_score = #{record.creditScore,jdbcType=BIGINT},
+      </if>
+      <if test="record.userImgUrl != null">
+        user_img_url = #{record.userImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLogin != null">
+        last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deviceOs != null">
+        device_os = #{record.deviceOs,jdbcType=CHAR},
+      </if>
+      <if test="record.appToken != null">
+        app_token = #{record.appToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxPubOpenId != null">
+        wx_pub_open_id = #{record.wxPubOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.growth != null">
+        growth = #{record.growth,jdbcType=BIGINT},
+      </if>
+      <if test="record.grade != null">
+        grade = #{record.grade,jdbcType=BIGINT},
+      </if>
+      <if test="record.plusFlag != null">
+        plus_flag = #{record.plusFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.plusExpiryDate != null">
+        plus_expiry_date = #{record.plusExpiryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.registerTime != null">
+        register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_user
+    set user_id = #{record.userId,jdbcType=BIGINT},
+      mobile_phone = #{record.mobilePhone,jdbcType=VARCHAR},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=SMALLINT},
+      user_type = #{record.userType,jdbcType=SMALLINT},
+      user_source = #{record.userSource,jdbcType=CHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      recom_code = #{record.recomCode,jdbcType=VARCHAR},
+      history_integral = #{record.historyIntegral,jdbcType=BIGINT},
+      valid_integral = #{record.validIntegral,jdbcType=BIGINT},
+      consume_integral = #{record.consumeIntegral,jdbcType=BIGINT},
+      out_date_integral = #{record.outDateIntegral,jdbcType=BIGINT},
+      referrer_user_id = #{record.referrerUserId,jdbcType=BIGINT},
+      birthday = #{record.birthday,jdbcType=DATE},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      credit_score = #{record.creditScore,jdbcType=BIGINT},
+      user_img_url = #{record.userImgUrl,jdbcType=VARCHAR},
+      last_login = #{record.lastLogin,jdbcType=TIMESTAMP},
+      device_os = #{record.deviceOs,jdbcType=CHAR},
+      app_token = #{record.appToken,jdbcType=VARCHAR},
+      wx_pub_open_id = #{record.wxPubOpenId,jdbcType=VARCHAR},
+      growth = #{record.growth,jdbcType=BIGINT},
+      grade = #{record.grade,jdbcType=BIGINT},
+      plus_flag = #{record.plusFlag,jdbcType=CHAR},
+      plus_expiry_date = #{record.plusExpiryDate,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=TINYINT},
+      register_time = #{record.registerTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gasq.bdp.logn.model.TUser">
+    update t_user
+    <set>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=SMALLINT},
+      </if>
+      <if test="userSource != null">
+        user_source = #{userSource,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="recomCode != null">
+        recom_code = #{recomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="historyIntegral != null">
+        history_integral = #{historyIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="validIntegral != null">
+        valid_integral = #{validIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="consumeIntegral != null">
+        consume_integral = #{consumeIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="outDateIntegral != null">
+        out_date_integral = #{outDateIntegral,jdbcType=BIGINT},
+      </if>
+      <if test="referrerUserId != null">
+        referrer_user_id = #{referrerUserId,jdbcType=BIGINT},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="creditScore != null">
+        credit_score = #{creditScore,jdbcType=BIGINT},
+      </if>
+      <if test="userImgUrl != null">
+        user_img_url = #{userImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null">
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceOs != null">
+        device_os = #{deviceOs,jdbcType=CHAR},
+      </if>
+      <if test="appToken != null">
+        app_token = #{appToken,jdbcType=VARCHAR},
+      </if>
+      <if test="wxPubOpenId != null">
+        wx_pub_open_id = #{wxPubOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="growth != null">
+        growth = #{growth,jdbcType=BIGINT},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=BIGINT},
+      </if>
+      <if test="plusFlag != null">
+        plus_flag = #{plusFlag,jdbcType=CHAR},
+      </if>
+      <if test="plusExpiryDate != null">
+        plus_expiry_date = #{plusExpiryDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="registerTime != null">
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gasq.bdp.logn.model.TUser">
+    update t_user
+    set mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=SMALLINT},
+      user_type = #{userType,jdbcType=SMALLINT},
+      user_source = #{userSource,jdbcType=CHAR},
+      password = #{password,jdbcType=VARCHAR},
+      recom_code = #{recomCode,jdbcType=VARCHAR},
+      history_integral = #{historyIntegral,jdbcType=BIGINT},
+      valid_integral = #{validIntegral,jdbcType=BIGINT},
+      consume_integral = #{consumeIntegral,jdbcType=BIGINT},
+      out_date_integral = #{outDateIntegral,jdbcType=BIGINT},
+      referrer_user_id = #{referrerUserId,jdbcType=BIGINT},
+      birthday = #{birthday,jdbcType=DATE},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      credit_score = #{creditScore,jdbcType=BIGINT},
+      user_img_url = #{userImgUrl,jdbcType=VARCHAR},
+      last_login = #{lastLogin,jdbcType=TIMESTAMP},
+      device_os = #{deviceOs,jdbcType=CHAR},
+      app_token = #{appToken,jdbcType=VARCHAR},
+      wx_pub_open_id = #{wxPubOpenId,jdbcType=VARCHAR},
+      growth = #{growth,jdbcType=BIGINT},
+      grade = #{grade,jdbcType=BIGINT},
+      plus_flag = #{plusFlag,jdbcType=CHAR},
+      plus_expiry_date = #{plusExpiryDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      register_time = #{registerTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.gasq.bdp.logn.model.TUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectUserByCommo" resultMap="BaseResultMap">
+  		select * from t_user
+  		where recom_code=#{0}
+  </select>
+  <select id="selectNextUserId" resultType="long">
+  	select coalesce(max(user_id),0)+1 nuserId from  t_user
+  </select>
+  <select id="selectUserCount" resultType="int">
+  select count(*) ct from t_user where user_name=#{0}
+  </select>
+  <select id="checkCommo" resultType="int">
+  select count(*) ct from t_user where recom_code=#{0}
+  </select>
+  <select id="selectUserCountByOpenId" resultType="int">
+  select count(*) ct from t_user where wx_pub_open_id=#{0}
+  </select>
+
+
+  <select id="selectRecomByOpenId" resultType="string">
+  select recom_code code from t_user where wx_pub_open_id=#{0}
+  </select>
+    
+  <select id="selectUserByOpenId" resultType="map" >
+  select * from t_user where wx_pub_open_id=#{0}
+  
+  </select>
+</mapper>

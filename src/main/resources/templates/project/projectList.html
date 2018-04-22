@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Content-Type" />
+<title>蕾特恩·祛痘</title>
+<link rel="shortcut icon" href="http://webapp.szreturn.com/favicon.ico" />
+<link rel="stylesheet" th:href="@{/static/css/Style.css}" />
+<link rel="stylesheet" th:href="@{/static/css/Sm.css}" />
+<link rel="stylesheet" th:href="@{/static/css/Sm-extend.css}" />
+<link rel="stylesheet"
+	th:href="@{/static/css/font_p0jt4bjt679icnmi.css}" />
+
+<script type="text/javascript" th:href="@{/static/js/PubFun.js}"
+	charset="utf-8"></script>
+<script language="javascript" th:href="@{/static/js/Ajax.js}"></script>
+<script type="text/javascript" th:href="@{/static/js/jweixin-1.2.0.js}"></script>
+<script language="javascript" th:href="@{/static/js/sSdk.js}" id="JsSdk"
+	appid="wx83d2a477b6cf30c0" timestamp="1516587627"
+	noncestr="gbNmaPgsXXI1YzEV"
+	signature="09f0d40f8a007c2389c2049e01b3495436d99eac"
+	openid="omaWIt6udX0A3FeF6syz0ZYIc3K8" fromorganid=""></script>
+<script type="text/javascript"
+	src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+</head>
+<body>
+
+	<div class="page-group " >
+		<div class="page page-current" id="page-index">
+
+
+
+			<div class="content native-scroll">
+
+<!-- 				<div class="content-padded">
+					<div class="searchbar row">
+						<div class="search-input col-80">
+							<label class="icon icon-search" for="search"></label> <input
+								type="search" id="Search" placeholder="输入关键字..." value="" />
+						</div>
+						<a class="button button-fill button-primary col-20"
+							href="javascript:void(0);" onclick="Search();">搜索</a>
+					</div>
+				</div> -->
+
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+
+
+						<tr>
+							<td height="1" bgcolor="#EFEFF4"></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF"  >
+
+								<!-- 这里是产品迭代位置 -->
+								
+
+								<div th:each="project : ${projects}">
+								<table    width="95%" border="0" align="center" cellpadding="0"
+									cellspacing="0">
+									<tbody onclick="javascript:void(0)">
+										<tr>
+											<td height="10" colspan="3"></td>
+										</tr>
+										<tr>
+											<td width="106" height="169" valign="top"><img
+												th:src="${project.imageUrl}" width="100"
+												height="auto" /></td>
+											<td width="150" valign="top">&nbsp;</td>
+											<td width="1525" valign="top">
+												<table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tbody>
+														<tr height="30" style="line-height: 25px;">
+															<td>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tbody>
+																		<tr>
+																			<td width="72%"><span class="F_FenHong_22"  th:text="${'积分'+ project.discount * project.money}"   ></span>
+																				<span class="F_Hui_12_ShanChuXian"    th:text="${'¥'+project.money}" th:style="'display:' +${project.discount eq 1}?'none':'block' ">	
+																			</span></td>
+																			 <td width="28%" align="right">
+																			 <div  ><img    th:src="${project.isenough}?'static/images/anniu.png':'static/images/aniu1.png'"  
+																			 class="tip2" style="height: 40px;line-height: 38px;margin-top: 12%;color: #bbbbbb;border: 0px solid #bbbbbb;cursor: pointer;"   th:onclick="${project.isenough}?'exchange('+${project.id}+')':'alert(\''+'积分不足'+'\')'" 
+																			 />
+																			 
+																			 </div>
+																			 </td>
+																			
+																		<!-- 	<td width="28%" align="right"><i</td> -->
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+														<tr>
+															<td valign="top"><span class="F_16" th:text="${project.projectName}" ></span></td>
+														</tr>
+														<tr>
+															<td>
+																<div class="tip3"  th:each="feature : ${project.listFeature}" th:text="${feature.desc}" ></div>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tbody>
+																		<tr>
+																			<td width="55%"><span class="F_FenHong_16">5.00</span>&nbsp;<span
+																				class="F_FenHong_16">★★★★★</span></td>
+<!-- 																			<td width="45%" align="right"><span
+																				class="F_FenHong_14">21人购买</span></td> -->
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<table width="100%">
+									<tbody>
+										<tr>
+											<td height="1" bgcolor="#EFEFF4"></td>
+										</tr>
+									</tbody>
+								</table>
+								</div>
+								
+							</td>
+						</tr>
+
+						<tr>
+							<td height="40" bgcolor="#FFFFFF" class="F_16" align="center"  onclick="newPage()" id="morepage" >没有更多数据</td>
+						</tr>
+						<tr>
+							<td height="65" bgcolor="#FFFFFF">&nbsp;</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+			<form id="sub" method="post" th:action="@{/projectList}"  style="display: none;">
+				<input id="keyword"  name="keyword" />
+			</form>
+		</div>
+		<div class="panel-overlay"></div>
+	</div>
+
+	<script th:inline="javascript">
+	
+	// whether more page is enabled
+	var isMoreEnable=[[${isMoreEnable}]];
+	window.onload=function(){
+		if(isMoreEnable==true){
+			document.getElementById('morepage').innerHTML='查看更多数据';
+			document.getElementById('morepage').style.cursor="pointer";
+		}else{
+			document.getElementById('morepage').innerHTML='没有更多数据';
+			document.getElementById('morepage').style.cursor="default";
+			
+		}
+		
+	}
+	function Search(){
+		
+		var keyword=document.getElementById("Search").value;
+		$('#keyword').val(keyword);
+		$('#sub').submit();
+	}
+	</script>
+	<script type="text/javascript" th:src="@{/static/js/Zepto.js}"
+		charset="utf-8"></script>
+	<script type="text/javascript" th:src="@{/static/js/Config.js}"
+		charset="utf-8"></script>
+	<script type="text/javascript" th:src="@{/static/js/sm.js}"
+		charset="utf-8"></script>
+	<script type="text/javascript" th:src="@{/static/js/Sm-extend.js}"
+		charset="utf-8"></script>
+		
+	<script type="text/javascript" th:src="@{/static/js/projectList.js}"
+		charset="utf-8"></script>
+
+</body>
+<script th:inline="javascript">
+basepath=[[${basepath}]];
+wx.config({
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: [[${appId}]], // 必填，公众号的唯一标识
+    timestamp: [[${timestamp}]], // 必填，生成签名的时间戳
+    nonceStr: [[${nonceStr}]], // 必填，生成签名的随机串
+    signature: [[${signature}]],// 必填，签名，见附录1
+    jsApiList: ['onMenuShareTimeline'
+    	,'onMenuShareAppMessage'
+    	,'onMenuShareQQ'
+    	,'onMenuShareWeibo'
+    	,'onMenuShareQZone'
+    	,'startRecord'
+    	,'stopRecord'
+    	,'onVoiceRecordEnd'
+    	,'playVoice'
+    	,'pauseVoice'
+    	,'stopVoice'
+    	,'onVoicePlayEnd'
+    	,'uploadVoice'
+    	,'downloadVoice'
+    	,'chooseImage'
+    	,'previewImage'
+    	,'uploadImage'
+    	,'downloadImage'
+    	,'translateVoice'
+    	,'getNetworkType'
+    	,'openLocation'
+    	,'getLocation'
+    	,'hideOptionMenu'
+    	,'showOptionMenu'
+    	,'hideMenuItems'
+    	,'showMenuItems'
+    	,'hideAllNonBaseMenuItem'
+    	,'showAllNonBaseMenuItem'
+    	,'closeWindow'
+    	,'scanQRCode'
+    	,'chooseWXPay'
+    	,'openProductSpecificView'
+    	,'addCard'
+    	,'chooseCard'
+    	,'openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+
+wx.ready(function(){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+
+/* 	if($("#error").val()==1){
+		alert('推荐码不存在');
+	}else if($('#error').val()==2){
+		alert('手机号不存在');
+	} */
+    
+});
+
+wx.error(function(error){
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	//alert(error);
+    
+});
+
+
+</script>
+
+</html>

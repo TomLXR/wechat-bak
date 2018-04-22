@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="renderer" content="webkit"/>
+  <meta content="yes" name="apple-touch-fullscreen"/>
+	<meta content="telephone=no" name="format-detection"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+  <meta http-equiv="Expires" content="-1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="pragma" content="no-cache"/>
+  <meta name="applicable-device" content="mobile"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta http-equiv="cache-control" content="max-age=0"/>
+  <meta http-equiv="cache-control" content="no-cache"/>
+  <meta http-equiv="expires" content="0"/>
+  <meta http-equiv="Set-Cookie" content="name=value expires= Sat Sep 27 16:12:36 CST 2008, path=/" />
+  <link    th:href="@{/static/point/css/point.css}"   rel="stylesheet" media="screen" type="text/css"/>
+  <script  th:src="@{/static/instruction/js/jquery-1.9.1.min.js}" ></script>
+ 	<style>
+       img{margin:-0.5px;padding: 0;border: 0;outline:none;vertical-align:top;}
+	</style> 
+</head>
+<body >
+<div class="wrap">
+     <div class="point-head">
+         <!-- <a href="javascript:void(0)" ><img  th:src="@{/static/point/images/toppage.png}" /></a> -->
+<!--          <div><p class="ponit-title">签到首页</p>
+              <p th:text="${username}"></p>
+          </div> -->
+          <!-- <a href="javascript:void(0)" ><img  th:src="@{/static/point/images/outpage.png}"/></a> -->
+     </div>
+     <div class="clear"></div>
+     <div class="point-banner">
+       <img    th:src="@{/static/point/images/point-banner.jpg}" />
+        <div >
+            <div>
+            <a href="javascript:void(0)" class="gold"><img  th:src="@{/static/point/images/gold.png}"  /><span  th:text="${score}"></span></a>
+            <a href="javascript:void(0)" class="sign1"><img  id="signpc"  th:src="@{/static/point/images/sign.jpg}"/><br/>&nbsp;今日签到+1</a>
+            </div>
+            <p class="clear"></p>
+            <div>
+              <a href="javascript:void(0)" class="sign2"><img  th:src="@{/static/point/images/sign2.png}" /><span>我的签到</span></a>
+              <a href="javascript:void(0)" class="sign3"><img  th:src="@{/static/point/images/duihuan.png}" /><span>兑换记录</span></a>
+              <a href="javascript:void(0)" class="gold2"><img  th:src="@{/static/point/images/gold1.png}" /><span>金币明细</span></a>
+            </div>
+        </div>
+        <div class="txt-phone">
+            <div class="hd">
+              <a class="next"></a>
+              <a class="prev"></a>
+            </div>
+            <div class="bd">
+              <ul class="infoList">
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户185****3264兑换了200元 面膜</a></li>
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户132****6654兑换了150元 洗面奶</a></li>
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户185****3264兑换了200元 洗面奶</a></li>
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户132****6654兑换了200元 洗面奶</a></li>
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户185****3264兑换了200元 洗面奶</a></li>
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户170****0121兑换了150元 洗面奶</a></li>
+                <li><span class="date"></span><a href="javascript:void(0)" target="_blank">用户185****3264兑换了150元 洗面奶</a></li>
+              </ul>
+            </div>
+        </div>
+     </div>
+     <div>
+         <p class="gold-title">金币奖品</p>
+         <ul class="point-item">
+            <li>
+            <div class="point-left">
+              <a href="javascript:void(0)" class="point-left1"><img th:src="@{/static/images/201711110417825.jpg}" width="200" height="150"  /> </a>
+              <a href="javascript:void(0)" class="point-left2" style="margin-left: 20px;">消除袪斑 </a>
+              <a href="javascript:void(0)"  class="point-left3"><img  th:src="@{/static/point/images/gold2.png}" /><span>200金币</span></a>
+            </div>
+            <a href="javascript:void(0)" class="point-right"><img th:src="@{/static/point/images/dui.jpg}"  /></a>
+            <p class="clear"></p>
+            </li>
+         </ul>
+     </div>
+     <div class="point-foot">
+         
+         <a href="javascript:void(0)"><span class="font24">更多金币玩法</span><br/><span class="font18">敬请期待!</span></a>
+      <!--    <img  th:src="@{/static/point/images/footbg.png}" />  -->
+     </div>
+     <form id="qr"  >
+     	
+     </form>
+ </div>  
+</body>
+<script type="text/javascript"  th:src="@{/static/point/js/jquery.SuperSlide.2.1.js}" ></script>
+<script th:inline="javascript">  
+        jQuery(".txt-phone").slide({mainCell:".bd ul",autoPlay:true,effect:"topMarquee",vis:2,interTime:50});  
+		sign='[[${sign}]]';  
+		window.onload=function(){
+			if(sign==1){
+					var sr=signpc.src.split('images\/')
+					
+				signpc.src=sr[0]+'images/yqd.png';
+			}
+			signpc.onclick=function(){
+				
+				if(sign==0){
+					window.location.href="point/sign";		
+				}else{
+					alert('已签到');
+				}
+			
+			}
+		}
+</script>
+
+
+</html>

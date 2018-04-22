@@ -1,0 +1,6 @@
+﻿body{background:#BF9F64;padding-bottom:1em;}
+section{width:94%;margin-top:2em;background:#fff;border-radius:.8em;overflow: hidden;position: relative;box-sizing:border-box;box-shadow:4px 4px 14px #A78C57;}
+section .titlepic{width:100%;}
+section .more{width:4em;position: absolute;bottom:1.2em;right:1em;}
+section h1{color:#B88622;font-weight:normal;padding:.8em 0 .5em;margin:0;font-size:1.2em;text-indent:1em;}
+section p{font-size:1em;text-indent:1em;padding:0 0 1.6em 0;margin:0;}
